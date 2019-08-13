@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* Zajecia07-rest-hateoas-0.0.1-SNAPSHOT
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* Zajecia09-rest-hateoas-0.0.1-SNAPSHOT
