@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Built-By: Paulina
 Build-Jdk: 12
-Implementation-Title: Zajecia07-rest-hateoas
+Implementation-Title: Doctors
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: pl.kurs.java
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
- -starter-parent/Zajecia07-rest-hateoas
+ -starter-parent/Doctors
 Created-By: Maven Integration for Eclipse
 
