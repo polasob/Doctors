@@ -84,7 +84,6 @@ public class DoctorController {
             contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
         } 
         catch (IOException ex) {
-            
         }
 
         if(contentType == null) {
