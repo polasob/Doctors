@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* pl.kurs.java.hateoas.HateoasApplication
+web: java -jar target/Doctors-0.0.1-SNAPSHOT.jar
