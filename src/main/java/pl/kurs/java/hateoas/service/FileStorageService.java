@@ -3,7 +3,6 @@ package pl.kurs.java.hateoas.service;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -30,8 +29,7 @@ public class FileStorageService {
 
 	private final Path fileStorageLocation;
 	private final Path fileDownloadLocation;
-	private BigDecimal downloadedFilesCounter;
-
+	
     public FileStorageService(FileStorageProperties fileStorageProperties) {
         this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir())
                 .toAbsolutePath().normalize();
@@ -50,7 +48,6 @@ public class FileStorageService {
             throw new FileStorageException("Could not create the directory "
             			+ "where new files for download will be stored.", ex);
         }
-        downloadedFilesCounter = new BigDecimal(0);
     }
 
     public Path storeFile(MultipartFile file) {

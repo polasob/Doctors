@@ -12,6 +12,8 @@ import javax.persistence.criteria.Selection;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import pl.kurs.java.hateoas.model.Doctor;
+import pl.kurs.java.hateoas.model.Patient;
 
 @Service
 @RequiredArgsConstructor
@@ -27,14 +29,30 @@ public class MyService {
 			for (Object[] objectArray : select) {
 				String line = "";
 				for (Object o : objectArray) {
-					line += o.toString() + ",";
+					if (o instanceof Doctor) {
+						line += ((Doctor)o).getId() + ",";
+					}
+					else if (o instanceof Patient) {
+						line += ((Patient)o).getId() + ",";
+					}
+					else {
+						line += o.toString() + ",";
+					}
 				}
 				selectData.add(line.substring(0, line.length()-1));
 			}
 		}
 		else {
 			for (Object o : select) {
-				selectData.add(o.toString());
+				if (o instanceof Doctor) {
+					selectData.add(((Doctor)o).getId().toString());
+				}
+				else if (o instanceof Patient) {
+					selectData.add(((Patient)o).getId().toString());
+				}
+				else {
+					selectData.add(o.toString());
+				}
 			}
 		}
 		
@@ -47,7 +65,7 @@ public class MyService {
 		
 		CriteriaQuery<Object[]> criteria = builder.createQuery( Object[].class );
 		Root<?> root = criteria.from(entity);
-				
+						
 		List<Selection<?>> selections = new ArrayList<Selection<?>>();
 		for(String col : columns) {
 			selections.add(root.get(col));
