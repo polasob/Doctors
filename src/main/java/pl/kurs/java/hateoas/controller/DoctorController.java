@@ -95,18 +95,7 @@ public class DoctorController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
-	
-	@GetMapping("/loadDoctorsFromFile")
-	public ResponseEntity<List<DoctorDto>> loadDoctorsFromFile() {
-		List<String[]> data = fileStorageService.loadDataFromFile(
-				"C:\\Users\\Paulina\\Downloads\\lekarze.txt", "\t");
-		List<Doctor> doctors = doctorService.loadDoctors(data);
 		
-		return ResponseEntity.ok(doctors.stream()
-										.map(d -> mapper.map(d, DoctorDto.class))
-										.collect(Collectors.toList()));
-	}
-	
 	@GetMapping("/")
 	public ResponseEntity<Page<DoctorDto>> getAllDoctors(
 			@PageableDefault(size = 10, page = 0, sort = "lastName", direction = Sort.Direction.ASC) Pageable pageable) {
